@@ -1,0 +1,824 @@
+<doctype html="">
+<meta charset="UTF-8" />
+<meta content="noindex" name="robots" />
+
+<head>
+		<meta charset="UTF-8">
+</head>
+		
+<style>
+
+
+
+
+
+
+body{
+	font-family:Verdana;
+	text-align: center; 
+}
+
+#tabela{
+	
+	width:100%;
+	border:solid 1px;
+	text-align:center;
+   	border-collapse:collapse; 
+}
+
+#tabela tbody tr{
+	 
+	border:solid 0px;
+	height:0px;
+
+}
+
+#tabela tbody td{
+	padding-top: 0px;
+  padding-right: 0px;
+  padding-bottom: 20px;
+  padding-left: 0px;
+
+	border:solid 1px;
+	height:0px;
+}
+
+#tabela thead{
+	background:beige;
+}
+/*
+#tabela thead th:nth-child(1){
+	width:100px;
+	*/
+	
+}
+
+#tabela input{
+	color:navy;
+	width:100%;
+   	
+}
+
+
+/*classe para imagem transparente das engrenagens*/
+.transparente {
+ opacity : 0.2; 
+}
+
+		*{
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+		body, html{
+			width: 100%;
+			height: 100%;
+			font-family: sans-serif;
+			font-size:12px;
+			line-height: 1;
+		}
+		
+		.body{
+			padding:20px;
+
+            /*Define cor de preenchimento da tabela central*/
+			background: rgba(56, 102, 10, 0.616);
+
+            /* Define margens da tabela central em relação a pagina */
+            			margin: 50px auto 100px auto;
+			max-width: 960px;
+			border-radius: 10px;
+		}
+		.body h1{
+			font-family: Georgia, serif;
+			font-size:25px;
+		}
+		
+
+/*classe parágrafo geral*/
+.p1{
+            text-align:left;
+            padding-top: 25px;
+             padding-right: 25px;
+          padding-bottom: 0px;
+         padding-left: 25px;
+
+		}
+		
+		.body div{
+			text-align:left;
+/*justify-content: left;*/
+		} 
+
+
+	</style>
+
+<body>
+
+
+<div id="toast-container" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 999999999; display: flex; flex-direction: column; align-items: center;"></div>
+
+<style>
+    .toast-message {
+        background: rgba(0, 0, 0, 0.9);
+        color: white;
+        padding: 20px 40px;
+        border-radius: 12px;
+        border: 2px solid gold;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+        animation: fadeInScale 0.4s ease-out;
+        font-family: Verdana, sans-serif;
+        text-align: center;
+        min-width: 300px;
+    }
+    @keyframes fadeInScale { 
+        from { opacity: 0; transform: scale(0.8); } 
+        to { opacity: 1; transform: scale(1); } 
+    }
+</style>
+
+
+
+<script>
+function mostrarToast(mensagem) {
+    const container = document.getElementById('toast-container');
+    if (!container) return;
+
+    const chavePix = "25064007884"; 
+    const toast = document.createElement('div');
+    toast.className = 'toast-message';
+    
+    toast.innerHTML = `
+        <div style="font-size: 18px; margin-bottom: 15px;">☕ ${mensagem}</div>
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+            <a href='https://apoia.se/rubenscarusojr' target='_blank' 
+            style="background: #FF4500; color: white; padding: 12px; border-radius: 6px; text-decoration: none; font-weight: bold; display: block; font-size: 14px;">
+            ❤️ Apoiar no Apoia.se
+            </a>
+            <button onclick="navigator.clipboard.writeText('${chavePix}'); alert('Chave Pix copiada! É só colar no seu banco.');" 
+            style="background: #32CD32; color: white; border: none; padding: 12px; border-radius: 6px; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 14px;">
+            <span>📋</span> Pix: Copiar Chave
+            </button>
+        </div>
+        <p style="font-size: 11px; margin-top: 15px; color: #ddd; line-height: 1.4;">
+            <b>Como pagar?</b><br>Copie a chave Pix e cole no <b>"Pix Copia e Cola"</b> do seu banco.
+        </p>
+    `;
+    
+    container.appendChild(toast);
+    
+    setTimeout(() => {
+        toast.style.opacity = '0';
+        setTimeout(() => toast.remove(), 500);
+    }, 20000);
+}
+
+window.addEventListener('load', () => {
+    // Pega a data de hoje (formato: YYYY-MM-DD)
+    const hoje = new Date().toISOString().split('T')[0];
+    const dataUltimaExibicao = localStorage.getItem('dataAvisoExibido');
+
+    // Só exibe se a data de hoje for diferente da data salva
+    if (dataUltimaExibicao !== hoje) {
+        setTimeout(() => {
+            mostrarToast("Gosta do projeto? Que tal dar um cafezinho para o Desenvolvedor!");
+            // Salva a data de hoje no armazenamento
+            localStorage.setItem('dataAvisoExibido', hoje);
+        }, 2000);
+    }
+});
+</script>
+
+
+
+
+
+
+
+
+<div class="body">
+
+
+<center><b><span style="font-family:verdana,geneva,sans-serif;">PROJETO MESAS VIRTUAIS</span></b></center>
+
+<br><br>
+
+<div id="divConteudo">
+
+
+<center><table id="tabela" style="width:100%;">
+	<thead>
+		<tr>
+			<th><span style="font-family:verdana,geneva,sans-serif;"><br>30/Maio/2026<br><br><span style="font-size:28px;">MESAS JÁ DISPONIBILIZADAS:<br></span></span><br></th>
+			<th><span style="font-family:verdana,geneva,sans-serif;"><span style="font-size:28px;"></span></span></th>
+		</tr>
+		<tr>
+			
+		</tr>
+	</thead>
+	<tbody>
+    
+
+		<tr>
+			
+		</tr>
+
+
+<tr>
+<td>
+		<b> 
+		
+					<p class="p1">Mesa 030_maio_2026<br>
+        <a href="spider_hunt" target="_blank" style="text-decoration: none; color: blue; font-weight: bold; display: inline-flex; align-items: center;">
+           SPIDER HUNT</a>
+   </p>
+		
+				<p class="p1">Mesa 025_maio_2026<br>
+        <a href="nine_circles_caruso_version" target="_blank" style="text-decoration: none; color: blue; font-weight: bold; display: inline-flex; align-items: center;">
+            NINE CIRCLES (Alternativo)- Versão Caruso!</a>
+   </p>
+		
+		
+		
+			<p class="p1">Mesa 05_mar_2026<br>
+        <a href="pencils_and_powers_versao2" target="_blank" style="text-decoration: none; color: blue; font-weight: bold; display: inline-flex; align-items: center;">
+            PENCILS & POWERS v2.0 - Rise of the Shadow Coven</a>
+   </p>
+   
+   
+   
+		
+		<p class="p1">Mesa 05_mar_2026<br>
+        <a href="pencils_and_powers_versao1" target="_blank" style="text-decoration: none; color: blue; font-weight: bold; display: inline-flex; align-items: center;">
+            PENCILS & POWERS - (O Cavaleiro Terrível)</a>
+   </p>
+   
+   
+			<p class="p1"> -------------------------------------------------------- </p>
+			
+			
+			
+		<p class="p1">Mesa v93003<br>
+        <a href="pencils_and_powers" target="_blank" style="text-decoration: none; color: blue; font-weight: bold; display: inline-flex; align-items: center;">
+            PENCILS & POWERS - (O Culto de Cthulhu)</a>
+   </p>
+		
+
+		
+		<p class="p1">Mesa v80030<br>
+        <a href="midnight_at_camp_blood" target="_blank" style="text-decoration: none; color: blue; font-weight: bold; display: inline-flex; align-items: center;">
+            MIDNIGHT AT CAMP BLOOD 
+            <span style="background-color: yellow; color: black; font-size: 12px; font-weight: bold; padding: 2px 6px; border-radius: 4px; margin-left: 8px;">SENHA REQUERIDA</span>
+        </a>
+    </p>	
+		
+			<p class="p1">Mesa v80030<br>
+        <a href="malleus_1666" target="_blank" style="text-decoration: none; color: blue; font-weight: bold; display: inline-flex; align-items: center;">
+            MALLEUS 1666</a>
+   </p>
+		
+		
+		<p class="p1"> Mesa v80030 <br><a href="lord_of_the_ring_adventure_deck_game" target="_blank">LORD OF THE RINGS: THE ADVENTURE DECK GAME</a></p>
+		
+		
+		<p class="p1"> Mesa v80030 <br>
+		    <a href="jasper_and_zot" target="_blank">JASPER AND ZOT [Redesenho] </a>
+    </p>
+		
+			<p class="p1">Mesa v80021<br>
+        <a href="dicevania" target="_blank" style="text-decoration: none; color: blue; font-weight: bold; display: inline-flex; align-items: center;">
+            DICEVANIA - QUINTET OF ROLLS
+            <span style="background-color: yellow; color: black; font-size: 12px; font-weight: bold; padding: 2px 6px; border-radius: 4px; margin-left: 8px;">SENHA REQUERIDA</span>
+        </a>
+    </p>	
+		
+					
+		<p class="p1"> Mesa v80020 <br>
+		<a href="mission_patrol" target="_blank">MISSION PATROL</a></p>
+
+		
+		<p class="p1">Mesa v80020<br>
+		<a href="terra_nova_trimegisto" target="_blank">NAVE TERRA NOVA - AUTOR: THREEMEGISTO</a></p>
+		
+		
+		
+	<p class="p1">Mesa v80020<br>
+        <a href="fireteam_zero" target="_blank" style="text-decoration: none; color: blue; font-weight: bold; display: inline-flex; align-items: center;">
+            FIRETEAM ZERO
+            <span style="background-color: yellow; color: black; font-size: 12px; font-weight: bold; padding: 2px 6px; border-radius: 4px; margin-left: 8px;">SENHA REQUERIDA</span>
+        </a>
+    </p>	
+		
+		
+		
+		
+		
+		<p class="p1"> Mesa v80010 <br><a href="torre_sombria" target="_blank">TORRE SOMBRIA</a></p>
+		
+			<p class="p1">MESA v80000<br><a href="master_of_the_universe" target="_blank">MASTERS OF THE UNIVERSE</a></p>
+		
+									 		<p class="p1"> -------------------------------------------------------- </p>
+									 		
+									 		
+									 		
+		<p class="p1">MESA v60001<br><a href="borracha_quente" target="_blank">BORRACHA QUENTE</a></p>		
+
+		
+		<p class="p1">MESA v51000<br><a href="aliens_board_game" target="_blank">ALIENS: A INFESTAÇÃO - (Versão Board Game) -- Autor: Caruso</a></p>
+		
+		
+			<p class="p1"> MESA v51000 <br><a href="zombie_in_my_pocket" target="_blank">ZOMBIE IN MY POCKET</a></p>
+		
+
+		
+		
+			<p class="p1"> MESA v40010 <br><a href="barbarian_prince" target="_blank">BARBARIAN PRINCE</a></p>
+		
+
+		
+		
+		<p class="p1"> MESA v35000 <br><a href="quest_for_the_dead_dragon_s_ruby" target="_blank">QUEST FOR THE DEAD DRAGON’S RUBY</a></p>
+		
+	
+					 <p class="p1"> MESA v34010 <br><a href="zombie_apocalypse" target="_blank">ZOMBIE APOCALYPSE</a></p>
+		
+
+		
+				 <p class="p1"> MESA v34008 <br><a href="chased" target="_blank">CHASED</a></p>
+
+			
+		 <p class="p1"> MESA v34008 <br><a href="dice_of_the_living_dead" target="_blank">DICE OF THE LIVING DEAD</a></p>
+		 
+
+		  
+		    <p class="p1"> MESA v34002 <br><a href="zombie_plague" target="_blank">ZOMBIE PLAGUE</a></p>
+		 
+	 
+		  
+		 	  <p class="p1">Mesa v32000<br>
+        <a href="dungeon_of_deadliest_evil" target="_blank" style="text-decoration: none; color: blue; font-weight: bold; display: inline-flex; align-items: center;">
+            DUNGEON OF DEADLIEST EVIL</a> 
+		       </p>
+		       
+		       <p class="p1"> v28/Abril/2025 <br><a href="masmorra" target="_blank">MASMORRA - Domínios do Desespero -- AUTOR: CARUSO</a></p>
+
+		       
+		       
+ 
+ 
+		  <p class="p1">Mesa v30000<br>
+        <a href="habits" target="_blank" style="text-decoration: none; color: blue; font-weight: bold; display: inline-flex; align-items: center;">
+            HABITS</a>            
+
+    
+    	
+		
+			
+		
+		<p class="p1">Mesa v28012<br>
+        <a href="space_trek_a_1card_mission" target="_blank" style="text-decoration: none; color: blue; font-weight: bold; display: inline-flex; align-items: center;">
+            SPACE TREK - A 1-CARD MISSION</a>
+            
+            		
+			<p class="p1">Mesa v27001<br>
+        <a href="asylum_rip" target="_blank" style="text-decoration: none; color: blue; font-weight: bold; display: inline-flex; align-items: center;">
+            REST IN PEACE - THE ASYLUM</a>
+    </p>
+		
+			
+
+      
+    	<p class="p1">Mesa v26000<br>
+        <a href="lantern" target="_blank" style="text-decoration: none; color: blue; font-weight: bold; display: inline-flex; align-items: center;">
+            LANTERN</a>
+    </p>
+		
+<p class="p1">Mesa v23005<br><a href="get_to_the_chopper"     target="_blank">GET TO THE CHOPPER!</a></p>	
+		
+<p class="p1">Mesa v23004<br><a href="decks_of_the_terror"     target="_blank">DECKS OF THE TERROR</a></p>	
+		
+		<p class="p1">Mesa v23002<br>
+        <a href="dungeons_dice_and_danger" target="_blank" style="text-decoration: none; color: blue; font-weight: bold; display: inline-flex; align-items: center;">
+            DUNGEONS, DICE & DANGER
+            <span style="background-color: yellow; color: black; font-size: 12px; font-weight: bold; padding: 2px 6px; border-radius: 4px; margin-left: 8px;">SENHA REQUERIDA</span>
+        </a>
+    </p>
+       			
+<p class="p1">Mesa v23000<br><a href="fire_tower_despertar_de_mordor"     target="_blank">FIRE TOWER (DESPERTAR DE MORDOR)</a></p>	
+
+<p class="p1">Mesa v23000<br><a href="goose_game"     target="_blank">THE ROYAL GAME OF GOOSE</a></p>	
+		    
+<p class="p1">Mesa v22000<br><a href="space_ace"     target="_blank">SPACE ACE</a></p>	
+
+<p class="p1">Mesa v21000<br><a href="awaken_the_ancients"     target="_blank">AWAKEN THE ANCIENTS</a></p>
+
+<p class="p1">Mesa v20025<br><a href="guards_and_goblins"     target="_blank">GUARDS AND GOBLINS - + Redesenho TODOS CONTRA A DENGUE</a></p>
+		
+<p class="p1">Mesa v20025<br><a href="journey_back_to_earth" target="_blank">JOURNEY BACK TO EARTH - (Doctor Who)- AUTOR: ??</a></p>
+
+<p class="p1">Mesa v20021<br><a href="nostromo_last_survivor" target="_blank">NOSTROMO: THE LAST SURVIVOR- AUTOR: BOJAN</a></p>
+   
+<p class="p1">Mesa v20010<br><a href="zombicide_tiny" target="_blank">CIDADE DOS ZUMBIS (Zombicide Tiny) -- AUTOR: CARUSO</a></p>
+		
+<p class="p1">Mesa v20001<br><a href="kart_dungeon" target="_blank">KART DUNGEON -- AUTOR: THREEMEGISTO</a></p>
+		
+<p class="p1">Mesa v14700<br><a href="assalto_no_colossus" target="_blank">ASSALTO NO COLOSSUS -- AUTOR: THREEMEGISTO</a></p>
+		    
+<p class="p1">Mesa v14700<br><a href="dungeon_of_darkness_dbz_v2" target="_blank">DUNGEON OF DARKNESS - Versão Dragon Ball Z -- AUTOR: BRUNO MACHADO</a></p>
+
+<p class="p1">Mesa v13206<br><a href="by_torchlight" target="_blank">BY TORCHLIGHT</a></p>
+
+<p class="p1">Mesa v13010<br><a href="demon_alternativo" target="_blank">DEMON ALIENS (Alternativo do DEMON RUN) </a></p>
+
+<p class="p1">Mesa v13008<br><a href="obcy_aliens_polones" target="_blank">OBCY - ALIENS</a></p>
+
+<p class="p1">Mesa v13006<br><a href="concurso_2024" target="_blank">THE MINI QUEST 1 - POKÉMON (Concurso 2024 - 1° Lugar)</a></p>
+
+<p class="p1">Mesa v12000<br><a href="maze_of_the _red_mage" target="_blank">MAZE OF THE RED MAGE</a></p>
+		
+<p class="p1">Mesa v11008<br><a href="zelda_ecos_da_sabedoria" target="_blank">ZELDA: ECOS DE SABEDORIA</a></p>
+		    
+<p class="p1">Mesa v10502<br><a href="dungeon_in_tin" target="_blank">DUNGEON IN A TIN</a></p>
+
+<p class="p1">Mesa v10501<br><a href="horde_of_dead" target="_blank">HORDE OF THE DEAD</a></p>
+
+<p class="p1">Mesa v9500<br><a href="mini_quest1" target="_blank">THE MINI QUEST 1</a></p>
+
+<p class="p1">Mesa v3000 <br><a href="under_falling_skies" target="_blank">UNDER FALLING SKIES</a></p>
+
+<p class="p1"> Mesa v3000 <br><a href="tiny_scythe" target="_blank">TINY SCYTHE</a></p>
+
+<p class="p1"> Mesa v3000 <br><a href="eldritch_tiny" target="_blank">ELDRITCH TINY</a></p>
+
+<p class="p1"> Mesa v3000 <br><a href="your_money_or_your_life" target="_blank">YOUR MONEY OR YOUR LIFE</a></p>
+
+
+
+
+   <p class="p1"> -------------------------------------------------------- </p>
+
+
+<p class="p1"> Mesa v1900 <br><a href="creature" target="_blank">CREATURE</a></p>
+		    
+<p class="p1"> Mesa v1702 <br><a href="9bit_dungeon" target="_blank">9-BIT DUNGEON [+Expansão não oficial]</a></p>
+   
+<p class="p1"> Mesa v1500 <br><a href="kaiju_dice" target="_blank">KAIJU DICE</a></p>
+
+<p class="p1"> Mesa v1000 <br><a href="nine_circles" target="_blank">NINE CIRCLES</a></p>
+ 
+<p class="p1"> Mesa v950 <br><a href="one_card_dungeon" target="_blank">ONE CARD DUNGEON [Redesenho]</a></p>
+ 
+<p class="p1"> Mesa v1000 <br><a href="the_d6_shooters" target="_blank">THE D6 SHOOTERS [Redesenho] </a></p>
+ 
+<p class="p1">Mesa v203 <br><a href="pesadelo_na_mansao" target="_blank">PESADELO NA MANSÃO</a></p>
+		
+<br><br>
+
+
+
+<br><br>
+    
+
+
+<img src="apoiase.jpeg" alt="Para quem quiser contribuir com o projeto MESAS VIRTUAIS " style="width:380px;"></img>
+<br><br>
+   <b> <a href="https://apoia.se/rubenscarusojr" target="_blank">Apoie Rubens Caruso Jr.</a></b>
+        <br>
+
+<b>Para quem quiser contribuir com o projeto e atualizações do código da mesa! 
+
+
+
+<br><br><br>
+<p><b>Atualizações e Mudanças na Mesa Virtual </b></p>
+
+
+
+
+
+
+
+
+
+<p class="p1">
+<b>30_maio_2026</b>° Ajuste gerais no efeito de seleçao das cartas e agora CSS ajustado para circulos perfeitos!
+<b>05_mar_2026</b>° Ajuste nas funções RESIZECARD e ZOOMGROUPSIZE... elas estavam tendo problemas em redimensionar cartas muito grandes 
+</p>
+
+<br><br>
+<hr style="border: 1px dashed black; width: 50%; margin: 0 auto;">
+<br>
+
+<p class="p1">
+<b>v93003</b>° Mexendo na lógica do rolamento dos dados.
+<b>v90002</b>° Resolvido popupzoom falhas gravacao! LOUSA e vários problemas do UNDO e REDO ajustados no index!
+<b>v90001</b>° Lousa implementada + Ajustes gerais!
+<b>v90000</b>° Novo sistema de desenho (LOUSA)! Novo design de alguns menus... teste radical!
+<b>v80021 - v80030</b>° Ajustes no Index para a coluna da esquerda! 1° som colocado no jogo, exatamente o rolar os dados!
+<br>
+
+<b>v80000 - v80020</b>° Bugs Gerais corrigidos, Botão rastreio implementado!
+<br>
+
+
+<b>v70000 - v70002</b>° Bugs Gerais corrigidos, Melhora do sistema que rola os dados que agora falham menos na rolagem. Também introduzido função BLUR para aguardar o carregamento tanto das faces dos dados quanto das cartas!
+<br>
+
+<b>v60000</b>° Minijanela: Corrijido bug no celular que flipava imagens. O fundo quando renderizado as vezes,se sobrepunha as minicartas!
+<br>
+
+<b>v51101 - 60002</b> ° Vários ajustes e correções!
+<br>
+
+<b>v51100</b> ° MOVIMENTO das cartas agora mesmo aumentadas ou rotacionadas sem pulos!
+<br>
+
+
+
+<b>v50020</b> ° No index aprimorei o script que gera um overlay CARREGANDO IMAGENS... até que todas as imagens sejam carregadas, caso haja algum problema de carregamento depois de 25 segundos este overlay some, o usuario é avisado mas pode continuar caso queira.
+<br>
+
+<b>v50010</b> ° Na função handleAutoScroll() agora ha detecção se é mobile alterando o valor da cont edgeThreshold que define quando a mesa inicia o deslizar quando um item alcança as bordas da janela
+<br>
+
+<b>v38000</b>° Ajuste na função function openPopupZoom(card), agora ela cria popups moviveis para poder tambem usar em regras! 
+<br>
+
+
+<b>v37000</b> ° Ajuste na função de ZOOM, agora aplicado pelo centro da mesa!
+<br>
+
+
+<b>v36000</b> ° Ajuste para que as NOTAS fiquem abaixo das cartas marcadas como sempre no topo.
+<br>
+
+
+
+<b>35000-35800</b> ° Na página index, incluido lógica que detecta teclas no teclado e as utiliza para chamar algumas funções! <br>
+FUNCÕES ATUAIS: <br>
+[ setas ] = Movimento fino da Carta <br><br>
+[ delete ] = Manda carta para deck de Descarte! <br>
+[ , ] = Manda carta para deck de Descarte! <br><br>
+[ + ] = Aumenta o tamanho da carta <br>
+[ - ] = Diminui o tamanho da carta <br><br>
+[ CTRL - ] = Zoom - na Mesa <br>
+[ CTRL + ] = Zoom + na Mesa <br><br>
+[ 4 ] = Rotaciona para a esq. <br>
+[ 6 ] = Rotaciona para a dir. <br><br>
+[ E ] = Abre Popup com Carta para visualizar melhor. <br><br>
+[ T ] = Trava ou Destrava uma carta travada na base da mesa! <br>
+[ D ] = Duplica uma carta na mesa<br>
+[ 8 , V ] = Vira a carta, mostrando seu verso<br>
+[ G ] = Agrupa as Cartas em uma pilha para movimenta-las
+
+
+</p>
+
+
+
+
+<p class="p1">
+<b>34008</b> ° Pequeno ajuste na funcão mostrarConteudoCartas() que não funcionava (trazer carta para frente) se elas estivessem travadas!
+
+<br>
+
+<b>v34007</b> ° Ajuste na função selectCardOnTable(card) para que libere trazendo para frente as cartas com data-locked="true" sejam trazidas para frente, mesmo quando clicadas no popup de mostrarConteudoCartas()
+
+<br>
+
+<b>v34006</b> ° Ajuste na função selectCardOnTable(card) para que libere trazendo para frente as cartas com data-locked="true" e que estas sejam trazidas para frente, mesmo quando clicadas no popup de mostrarConteudoCartas()
+
+<br>
+
+<b>v34005</b> ° Na função openpopupZoom(card), agora leva-se em consideração a rotação da carta ao mostrá-la na janela popup!
+
+<br>
+
+<b>v34002</b> ° Verifica se o elemento esta travada com data-locked == true, neste caso ela não fica transparente ao mover a mesa clicando sobre ela! ajustado para isso: function onTouchMove(event)  e  function onMouseMove(event)
+
+<br>
+
+<b>v34000</b> ° Ajustes gerais e agora com botão deslizante para alterar cor! Funciona bem mais com marcadores coloridos, tipo o vermelho! Este conseguimos alterar a cor para vários tipos.
+
+<br>
+
+<b>v32000</b> ° Agora ajuste melhor no pulsar amarelo de destaque. Ao mover cartas elas se tornam transparentes!
+
+<br>
+
+
+
+<b>v31000</b> ° Carta selecionada agora com efeito pulsante, ao parar o mouse agora o estado da carta é mostrado!
+<br>
+
+
+
+<b>v30000</b> °  Ajustes mais adequados com relação ao uso das Border... agora ao trocar como tracejado vermelho, cinza ou nenhum, a posição da carta não é alterada quanto a posição X e Y
+<br>
+
+
+
+<b>v29000</b> ° Vários ajustes com relação a BORDAS... alguns casos usando agora [boxShadows] para não alterar a posição das cartas! Funções DUPLICAR e TRAVAR CARTA agora mais estáveis...  removendo bordas desnecessárias!
+<br>
+
+
+
+<b>v28012</b> ° Agrupar e Criar Novo Deck agora conta com condicional que evita que os DADOS sejam incluidos! Ainda não consegui resolver este problema com eles, então preferi optar por não permitir caso estejam na pilha!
+<br>
+
+
+<b>v28011</b> ° Agora quando um dado é colocado na mesa ele já é rolado!
+<br>
+
+
+
+<b>v28010</b> ° Incluido nas NOTAS botão de TRAVAR/DESTRAVAR... 
+<br>
+
+<b>v28001</b> ° Função MOVEDECK() agora tem um temporizador que desliga apos um agrupamento caso o movimento nao ocorra dentro de um certo tempo (testando 3 segundos)Isso evita que ao apenas agrupar, caso não mova a pilha e selecionemos outra carta e a movemos ocorra o movimento tambem indesejado do deck anteriormente agrupado!
+<br>
+
+<b>v28000</b> ° moveDeck() / StackCards() + groupandflipcards() + agruparetrazerparafrente() + zoomgroupsize ... ajustados! O stackcards()[AGRUPA E EMBARALHA]] agora chama 
+
+
+<b>v27000 - 1</b> ° Todos os agrupamentos agora chamam a função MOVEDECK(), nela agora há um temporizador para caso não haja o movimento do deck agrupado em um certo tempo(testando 3 segundos) é desabilitado! 
+<br>
+° Agora ao agrupar em qualquer função, as cartas já visualmente ficarão alinhadas em pilha! Antes só ocorria quando movimento se iniciava.
+
+
+<b>v26000</b> ° Novo sistema de SAVE e LOAD para arquivos criado e em teste!
+<br>
+
+<b>v25000</b>  ° Nova função mais robusta de UNDO implementada aqui e na outras mesas virtuais que já tinham ;)
+<br>
+° Implementação de ajuste do zindex nas cartas marcadas como no topo(Marcadores), sendo que agora podemos alterar esta posição ao clicar nelas!
+<br>
+° Janela de confirmação implementada nas notas antes de Apagar! 
+<br>  
+  
+<b>v23004 - 5</b>  ° Agora na função Grid, caso nada seja digitado no numero de Colunas, serão usadas TODAS as cartas da pilha!
+<br>
+° Compensação geral aumentada de 800 para 1800! Botão Direito do mouse desabilitado dentro da area da mesa virtual!
+<br>
+° Correções gerais realizadas!
+<br>
+
+<b>v23000</b>  ° Correcōes no escolher face do dado e movimento das notas mais amplo agora.
+<br>
+° Correções gerais realizadas!
+<br>
+
+<b>v21000</b>  ° Agora o botões de SETUP ao serem clicados geram um Setup aleátorio!
+<br>
+° Correções gerais realizadas!
+<br>
+
+<b>v2025</b>  ° Finalmente arraste da mesa virtual funcional, parando ao se passar os limites da janela! Ajustei isso em todas as mesas anteriores!
+<br>
+° Correções gerais realizadas!
+
+<b>v20024</b>  ° Ajustes necessários para uso de imagens de fundo!
+<br>
+° Correções gerais realizadas!
+<br>
+
+<b>v20020</b>  ° Ajuste nas funções de movimento, agora diminuido ainda mais o pulinho pois levando em consideraçao a scale aplicada a carta!
+<br>
+° Correções gerais realizadas!
+<br>
+
+<b>v20011</b>  ° Popup de zoom para as carta aprimorado e agora inclui botão virar, cambiando entre cardX.jpeg e cardXback.jpeg  
+<br>
+° Correções gerais realizadas!
+<br>
+<b>v20001</b>  ° Cartas fixadas na mesa não podem virar marcadores no topo sem expressa confirmação, e vice versa! 
+<br>
+° Correções gerais realizadas!
+<br>
+
+<b>v14700</b>  ° Função de Agrupamento de cartas com opçoes implementada! 
+<br>
+° Correções gerais realizadas!
+<br>
+
+
+<b>v14002</b>  ° Novo deck de Descarte implementado! Ajustes profundos nos popups, direto no codigo agora!
+<br>
+<b>v13206</b>  ° REMOVIDO Zoom da imagem ao segurar o clique ou toque... estava dando muitos problemas então temporariamente desativado. Seu uso agora é através de botão no Popup.
+<br>
+° Ajustes gerais.
+<b>v13008</b>  ° Sistema UNDO mais refinado e agora quando clicado NOVO JOGO ou SETUP valores registrados são zerados! 
+<br>
+<b>v13103</b>  ° Função  EMBARALHAR DECK NA MESA + (OPÇÔES) refinada! Agora inclui outras opções: VIRAR(Costas) e ROTACIONAR.
+<br>
+° Ajustes gerais.
+<br>
+<b>v13010</b>  ° Indicador visual de 2 segundos (BORDA AZUL) nos itens colocados na mesa!
+<br>
+° Ajustes gerais.
+<b>v13008</b>  ° Sistema UNDO mais refinado e agora quando clicado NOVO JOGO ou SETUP valores registrados são zerados! 
+<br>
+° Ajustes gerais.
+ <b>v13006</b>  ° Implementado sistema beta para realizar UNDO de ações da mesa!
+<br>
+° Ajustes gerais.
+<br>
+ <b>v13000</b>  ° PARECE que finalmente resolvi o problema que ao restaurar um save os dados rolavam descontroladamente!
+<br>
+° Ajustes gerais.
+<br>
+ <b>v12000</b>  ° Nova implementação de SETUP... onde ao clicar no botão, um SETUP pré-configurado é colocado na mesa!
+<br>
+° Ajustes gerais.
+ <b>v11008</b> ° Nova Função: EMBARALHAR DECK (AGRUPAMENTO), embaralha todas as cartas do deck que estejam na mesa... trocando entre si os lugares aleatóriamente!
+<br>
+° Nova Função: TRAVAR/DESTRAVAR DECK (AGRUPAMENTO), trava e destrava todas as cartas do deck presentes na mesa!
+<br>
+° Ajustes gerais.
+<br>
+ <b>v10502</b> ° Ajustes gerais.
+<br>
+<b>v10501</b> ° Implementado botão no popup que rola todos os dados presentes do mesmo deck!
+<br>
+<b>v10000</b> ° Dados e marcadores agora são colocados na mesa em número ilimitado sem necessidade de cópia! <br> ° DinDin colocado como marcador e com cálculo mostrado no topo da página!
+<br>
+<b>v9500</b> ° Ajustes mais aprofundados nas funções! <br> ° Dados e marcadores agora são colocados na mesa em número ilimitado sem necessidade de cópia!
+<br>
+<b>v9000</b> ° Ajustes mais aprofundados nas funções.
+<br>
+<b>v8200</b> ° Notas agora centradas na janela ao serem colocadas na mesa. <br> ° Funções gerais de agrupamento revisadas e agora as Agrupar+Virar, Agrupar+Embaralhar, Agrupar+Dimensionar ao final estão finalmente conseguindo mover o deck das cartas agrupadas!
+<br>
+<b>v8100</b> ° Ajuste importantes na função TRAVAR/DESTRAVAR! Mais ajustes gerais. Desta vez testando uma reorganização mantendo a ordem z-index entre as cartas travadas ao restaurar, e depois as não travadas colocadas acima na ordem hierquica z-index. Parece melhor assim na restauração do load esta reorganização.
+<br>
+<b>v8000</b> - ° Notas mais ajustadas.<br> ° Problema do movimento das cartas com o zoom menor da mesa aplicado compensando na função MOVEDECK. <br> ° Função de Agrupamento+Virar Cartas parece que finalmente corrigido! <br> ° Alguns ajustes com relação aos dados. <br> ° Problema detectado com o load de cartas travadas! Provavelmente corrigido...
+<br>
+<b>v5200</b> ° Ainda apanhando para fazer as notas funcionarem no celular (Sem sucesso no deletar)... Mas pelo menos agora temos um marcador SPINNER para vidas ou outros acompanhamentos de pontos até 8! Função travar nele não impede rotação como as demais cartas travadas.
+<br>
+<b>v5100</b> ° Ajuste importantes na função TRAVAR/DESTRAVAR! Mais ajustes gerais.
+<br>
+<b>v5000</b> ° FINALMENTE! Os Dados agora podem ser colocados como são os itens dos Decks1 E o melhor... serão salvos tambem!
+<br>
+<b>v4200</b> ° Notas agora podem sem apagadas!<br> ° Marcadores são colocados na mesa mantidos na frente dos demais componentes! Lógico né, até alterarmos isso! 
+<br>
+<b>v4100</b> ° Auto Save, Save LocalStorage e opcionalmente eterno(beta) + Apagar Nota! 
+<br>
+<b>v3000</b> ° Auto Save e Save LocalStorage concluídos, mais algumas correções feitas!
+<br>
+ <b>v2000</b> ° Auto Save e Save LocalStorage em teste!
+<br>
+ <b>v1999</b> ° Auto Save e Save LocalStorage em teste!
+<br>
+ <b>v1900</b> ° Possibilidade de colocar Notas flutuantes editáveis!
+<br>
+ <b>v1702</b> ° Dados com sombra e alguma tentativa leve de mostrar que página deve ficar ativa.
+<br>
+<b>v1600</b> ° Botão rolar do dado agora se oculta ao clicar fora dele, pequena animação ao rolar o dado!
+<br>
+<b>v1500</b> ° Agora opção de recolher de volta para o deck somente a carta selecionada (Opção na janela Popup)!
+<br>
+<b>v1400</b> ° Função de arraste da mesa agora sobre cartas travadas!
+<br>
+<b>v1100</b> ° AJustes Gerais, visuais e testando agora embaralhamento dos decks já no carregamento!
+<br>
+<b>v1000</b> ° Ajustes Gerais e agora incluido Popup concentrando opções e função de escolha da face do dado!
+<br>
+<b>v900</b> ° Ajustes Gerais
+<b>v500</b> ° Ajuste Gerais e vários Bugs arrumados. Mas Falta muito ainda!!!
+<br>
+<b>v200</b> ° Ajuste Gerais e testando algumas funções novas! <br> ° Bugs localizados, uma bela infestação! kkkkkkk
+<br><br>
+<b>v1</b> ° Início do projeto Mesas Virtuais!<br>° A idéia é conseguir um funcionamento básico para poder jogar alguns joguinhos Print and Play já que no momento sem possibilidade de imprimí-los! Vou também deixar o projeto aberto para os colegas que quiserem usá-lo ou assim como eu, precisarem! ;)
+
+
+</p>
+
+<br><br><br>
+<p><b>Caso tenham algum problema ou dúvida, podem conversar comigo direto via: rubenscaruso@gmail.com </b></p>
+
+
+<br><br>
+
+
+</td>
+</tr>
+
+
+
+
+	</tbody>
+</table></center>
+
+
+
+
+
+
+
+
+
+
+
+
+	</body>
+
+</html>
